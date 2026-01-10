@@ -9,14 +9,14 @@ import decimal as _decimal
 import logging
 
 logger = logging.getLogger(__name__)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="http://localhost:4000/auth/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="https://authservices-npr8.onrender.com/auth/token")
 router = APIRouter()
 
-BLOCKCHAIN_URL = "http://localhost:8006/blockchain/restock"
+BLOCKCHAIN_URL = "https://ims-blockchain.onrender.com/blockchain/restock"
 
 # helper to get user id from token
 async def get_user_id_from_token(token: str) -> int:
-    USER_SERVICE_ME_URL = "http://localhost:4000/auth/users/me"
+    USER_SERVICE_ME_URL = "https://authservices-npr8.onrender.com/auth/users/me"
     async with httpx.AsyncClient() as client:
         response = await client.get(USER_SERVICE_ME_URL, headers={"Authorization": f"Bearer {token}"})
         response.raise_for_status()
@@ -42,7 +42,7 @@ def get_batch_status(material_amount: float) -> str:
 async def validate_token_and_roles(token: str, allowed_roles: List[str]):
     async with httpx.AsyncClient() as client:
         response = await client.get(
-            "http://localhost:4000/auth/users/me",
+            "https://authservices-npr8.onrender.com/auth/users/me",
             headers={"Authorization": f"Bearer {token}"}
         )
         if response.status_code != 200:
