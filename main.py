@@ -26,7 +26,7 @@ app.add_middleware(
         "http://localhost:4000",  
 
         # POS
-        "https://sales-services.onrender.com",  # frontend 
+        "https://sales-services.onrender.com", #sales service
 
         # OOS
         "https://bleu-oos-rouge.vercel.app",  # frontend
