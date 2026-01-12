@@ -23,8 +23,7 @@ app.add_middleware(
         "https://bleu-ims-beta.vercel.app",  # ims frontend
         "https://authservices-npr8.onrender.com",  # auth service
         "https://bleu-stockservices.onrender.com",  # stock service
-        "http://localhost:4000",  
-
+        
         # POS
         "https://sales-services.onrender.com", #sales service
 
